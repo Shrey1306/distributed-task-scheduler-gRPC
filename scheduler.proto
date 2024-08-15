@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service TaskScheduler {
+    rpc SubmitTask (TaskRequest) returns (TaskResponse);
+    rpc GetTaskStatus (TaskStatusRequest) returns (TaskStatusResponse);
+}
+
+message TaskRequest {
+    string command = 1;
+}
+
+message TaskResponse {
+    string task_id = 1;
+}
+
+message TaskStatusRequest {
+    string task_id = 1;
+}
+
+message TaskStatusResponse {
+    string status = 1;
+    string output = 2;
+}
