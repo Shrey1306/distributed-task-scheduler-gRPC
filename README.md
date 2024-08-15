@@ -1,5 +1,9 @@
 # Distributed Task Scheduler
 
+## Understanding stubs and skeletons
+Link: https://medium.com/@alrazak/grpc-stubs-and-skeletons-f0203bfedf11 
+Credit: @alrazak
+
 ## Overview
 This is a distributed task scheduler system that allows clients to submit tasks to a remote server, which executes the tasks asynchronously and returns the task status and output.
 
