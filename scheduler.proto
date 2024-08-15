@@ -1,23 +1,31 @@
 syntax = "proto3";
 
+// TaskScheduler service defines RPC methods for task submission and task status retrieval
 service TaskScheduler {
+    // SubmitTask allows a client to submit a task (a shell command) to be executed
     rpc SubmitTask (TaskRequest) returns (TaskResponse);
+
+    // GetTaskStatus allows a client to retrieve the current status and output of a task
     rpc GetTaskStatus (TaskStatusRequest) returns (TaskStatusResponse);
 }
 
+// TaskRequest defines the structure of the task being submitted, including the command to execute
 message TaskRequest {
-    string command = 1;
+    string command = 1;  // Shell command to be executed
 }
 
+// TaskResponse provides the client with the unique task ID after submission
 message TaskResponse {
-    string task_id = 1;
+    string task_id = 1;  // Unique ID assigned to the task
 }
 
+// TaskStatusRequest allows a client to query the status of a task by its task_id
 message TaskStatusRequest {
-    string task_id = 1;
+    string task_id = 1;  // The unique ID of the task to query
 }
 
+// TaskStatusResponse provides the client with the task status and any output produced by the task
 message TaskStatusResponse {
-    string status = 1;
-    string output = 2;
+    string status = 1;   // Current status of the task (e.g., PENDING, RUNNING, COMPLETED, FAILED)
+    string output = 2;   // Output produced by the task (if any)
 }
